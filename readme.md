@@ -1,5 +1,5 @@
 # RHCSA/RHCE Lab Environment
-This has been forked from https://github.com/hvanderlaan/rhcsa-rhce-lab-environment.git and has small changes to address issues found on latest RHEL7.
+This has been forked from https://github.com/hvanderlaan/rhcsa-rhce-lab-environment.git and has small changes to address issues found on RHEL7.0.
 
 This is a study environment for studying your ex200/ex300 (rhcsa7/rhce7) certification. This study environment is created with [vagrant](https://www.vagrantup.com/) and [virtualbox](https://www.virtualbox.org/). Also the base os is a [ubuntu](https://www.ubuntu.com/) system and is tested on a [macOS Sierra](https://www.apple.com) system. But this environment should also work on other linux operating systems (prosible with some small alterations).
 

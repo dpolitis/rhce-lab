@@ -26,9 +26,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
 	# configure labipa server
 	config.vm.define "labipa" do |node|
-		node.vm.box = "centos/7"
+                node.vm.box_check_update = false
+                node.vm.box = "file://packer/builds/virtualbox-centos7.box"
+                #node.vm.box = "centos/7"
+                #node.vm.box_version = "1505.01"
 		node.vm.hostname = "labipa.example.com"
 		node.vm.network "private_network", ip: "172.16.20.2", auto_config: false
+                node.vm.synced_folder '.', '/vagrant', disabled: true
+
 
 		# provider settings for labipa
 		node.vm.provider "virtualbox" do |vbox|
@@ -51,11 +56,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	# condigure system1 and system2 srvers
 	(1..2).each do |i|
 		config.vm.define "system#{i}" do |node|
-			node.vm.box = "centos/7"
+                        node.vm.box_check_update = false
+                        node.vm.box = "file://packer/builds/virtualbox-centos7.box"
+                        #node.vm.box_version = "1406.01"
 			node.vm.hostname = "system#{i}.example.com"
 			node.vm.network "private_network", ip: "172.16.20.#{i}0", auto_config: false
 			node.vm.network "private_network", ip: "172.16.20.1#{i}0", auto_config: false
 			node.vm.network "private_network", ip: "172.16.20.2#{i}0", auto_config: false
+                        node.vm.synced_folder '.', '/vagrant', disabled: true
 
 			# provider settings for system1 and system2
 			node.vm.provider "virtualbox" do |vbox|

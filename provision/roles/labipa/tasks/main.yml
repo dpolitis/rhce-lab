@@ -14,12 +14,6 @@
     policy: targeted
     state: enforcing
 
-- name: upgrade all packages
-  yum:
-    name: '*'
-    state: latest
-    update_cache: yes
-
 - name: installing freeipa packages
   yum:
     name: "{{ ipa_packages }}"
@@ -51,7 +45,7 @@
 
 - name: configure freeipa service
   shell: "ipa-server-install \
-    --setup-dns --domain={{ domain_name }} --allow-zone-overlap \
+    --setup-dns --domain={{ domain_name }} --ip-address={{ ipa_ipv4 }} \
     --realm={{ ipa_realm }} --ds-password={{ ldap_directory_manager_password }} \
     --admin-password={{ ipa_admin_password }} --forwarder={{ ansible_dns.nameservers[0] }} \
     --unattended"

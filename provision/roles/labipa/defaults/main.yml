@@ -12,7 +12,6 @@
 ipa_packages:
   - haveged
   - ipa-server
-  - ipa-server-dns
   - bind-dyndb-ldap
 ipa_firewall_rules:
   - http

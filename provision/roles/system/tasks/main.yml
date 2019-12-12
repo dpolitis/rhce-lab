@@ -21,12 +21,6 @@
     enabled: true
     state: started
 
-- name: upgrade all packages
-  yum:
-    name: '*'
-    state: latest
-    update_cache: yes
-
 - name: setting dns servers to labipa
   shell: 'nmcli con mod "System eth1" ipv4.dns 172.16.20.2 +ipv4.dns 8.8.8.8 ipv6.dns fd00:cafe::2'
 
